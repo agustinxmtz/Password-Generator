@@ -62,6 +62,39 @@ var randomNumber = function(min, max) {
     return value;
 }
 
+//function creates series of prompts 
+var criteriaPrompts = function() {
+
+    while(passwordCriteria.size < 8 || passwordCriteria.size > 128) {
+        passwordCriteria.size = window.prompt("How long should the password be? (8 - 128 characters)")
+        if (passwordCriteria.size < 8 || passwordCriteria.size > 128) {
+            window.alert ("Please enter a password size between 8 and 128 characters!");
+        }
+    }
+
+    while (passwordCriteria.lowercase === 0 && passwordCriteria.uppercase === 0 && passwordCriteria.numeric === 0 && passwordCriteria.special === 0) {
+        var lowercaseConfirm = window.confirm("Would you like to include lowercase letters?");
+        if (lowercaseConfirm) {
+            passwordCriteria.lowercase = 1;
+        }
+        var uppercaseConfirm = window.confirm("Would you like to include uppercasecase letters?");
+        if (uppercaseConfirm) {
+            passwordCriteria.upercase = 1;
+        }
+        var numericConfirm = window.confirm("Would you like to include numbers?");
+        if (numericConfirm) {
+            passwordCriteria.numeric = 1;
+        }
+        var specialConfirm = window.confirm("Would you like to include special characters?");
+        if (specialConfirm) {
+            passwordCriteria.special = 1;
+        }
+        if (passwordCriteria.lowercase === 0 && passwordCriteria.uppercase === 0 && passwordCriteria.numeric === 0 && passwordCriteria.special === 0) {
+            window.alert ("You must choose at least one type of character to include in your password!");
+        }
+    }
+}
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
