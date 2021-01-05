@@ -16,6 +16,8 @@ var passwordCriteria = {
 // Write password to the #password input
 function writePassword() {
 
+    criteriaPrompts ();
+
     //calls the function that actually generates the password
     var password = generatePassword();
 
@@ -92,9 +94,26 @@ var criteriaPrompts = function() {
         if (passwordCriteria.lowercase === 0 && passwordCriteria.uppercase === 0 && passwordCriteria.numeric === 0 && passwordCriteria.special === 0) {
             window.alert ("You must choose at least one type of character to include in your password!");
         }
+        console.log(passwordCriteria);
     }
 }
 
+//function will generate a single character set and return it 
+var genLowercase = function() {
+    return String.fromCharCode(97 + randomNumber(0, 25));
+}
+
+var genUppercase = function() {
+    return String.fromCharCode(65 + randomNumber(0, 25));
+}
+
+var genNumeric = function() {
+    return String.fromCharCode(49 + randomNumber(0, 8));
+}
+
+var genSpecial = function() {
+    return String.fromCharCode(33 + randomNumber(0, 14));
+}
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
