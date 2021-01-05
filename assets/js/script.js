@@ -55,6 +55,13 @@ var generatePassword = function() {
     return newPassword;
 }
 
+//generates random numbers between and including min and max
+var randomNumber = function(min, max) {
+    var value = Math.floor(Math.random() * (max - min + 1) + min);
+
+    return value;
+}
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
